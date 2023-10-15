@@ -2,7 +2,7 @@
 <h1 align="center">AILOVER</h1>
 <p align="center">This is a small website built in Next.js, React, Tailwind CSS, Redux, Firebase auth, Firebase database, TypeScript. Main idea on this website is to create website to manage all websites about AI.</p>
 
-[![My Skills](https://skillicons.dev/icons?i=react,next,firebase,typescript)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=react,next,firebase,typescript,tailwind)](https://skillicons.dev)
 
 
 
