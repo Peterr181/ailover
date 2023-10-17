@@ -58,7 +58,7 @@ const WebsitesItem = () => {
   dispatch(setterWebsites(websites));
 
   return (
-    <div className="websiteItemAdd shadow-md">
+    <div className="websiteItemAdd ">
       <div className="flex justify-center align-center mt-14">
         <button
           onClick={() => setShowModal(true)}

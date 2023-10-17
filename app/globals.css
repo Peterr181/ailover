@@ -212,6 +212,27 @@ body {
 
   transition: 0.3s all;
 }
+.downArrow {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+.registerpanel {
+  background-color: #1b2133;
+  height: 100vh;
+}
+.dropdownhehe {
+  background-color: #1b2133;
+}
+.userProfileContainer {
+  display: flex;
+  align-items: center;
+}
+.userAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
 
 .websiteItem:hover {
   transform: translateY(-5px);
