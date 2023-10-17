@@ -1,5 +1,5 @@
 "use client";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { auth } from "../firebase";
@@ -8,9 +8,22 @@ export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordAgain, setPasswordAgain] = useState("");
+  const [nickname, setNickname] = useState("");
   const router = useRouter();
   const signup = () => {
-    createUserWithEmailAndPassword(auth, email, password);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        // Update the user's display name (nickname)
+        updateProfile(user, { displayName: nickname }).then(() => {
+          // Successfully added the nickname
+          console.log(`Nickname ${nickname} added to user profile`);
+        });
+      })
+      .catch((error) => {
+        // Handle any errors that occur during user creation
+        console.error(error.message);
+      });
   };
 
   return (
@@ -29,6 +42,24 @@ export default function Signup() {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="space-y-6">
+            <div>
+              <label
+                htmlFor="nickname"
+                className="block text-sm font-medium leading-6 text-white"
+              >
+                Nickname
+              </label>
+              <div className="mt-2">
+                <input
+                  id="nickname"
+                  name="nickname"
+                  type="text"
+                  onChange={(e) => setNickname(e.target.value)}
+                  required
+                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6 p-4"
+                />
+              </div>
+            </div>
             <div>
               <label
                 htmlFor="email"

@@ -22,7 +22,6 @@ body {
 }
 
 .websitesColor {
-  background-color: #0f172a;
 }
 
 /* START: General styles */
@@ -249,4 +248,71 @@ body {
 
 .plusign path {
   fill: "white";
+}
+
+.secondContent {
+  background-color: #0f172a;
+}
+
+.discordContainer {
+  margin-top: 10rem;
+}
+.discordWrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 7rem;
+  background-color: #2563eb;
+  border-radius: 11px;
+  text-align: center;
+  color: #fff;
+  font-size: 1.4rem;
+  position: relative;
+
+  background-color: rgb(62, 84, 163);
+}
+/* .discordWrapper::before {
+  content: "";
+  background-image: url("/public/discordBehind.svg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: red;
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+
+  z-index: 1000;
+} */
+
+.discordLogo {
+  display: flex;
+  justify-content: center;
+}
+
+.dcButton {
+  moz-box-align: center;
+  align-items: center;
+  border: 0px;
+  border-radius: 10rem;
+  background-color: rgb(255, 255, 255);
+  color: rgb(62, 84, 163);
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: "Barlow", sans-serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 700;
+  -moz-box-pack: center;
+  justify-content: center;
+  letter-spacing: 0.1rem;
+  line-height: 1;
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 150ms ease 0s, color 150ms ease 0s;
+}
+
+.downArrow {
+  transform: translateY(3px);
 }

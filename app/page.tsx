@@ -6,6 +6,8 @@ import { Roboto } from "@next/font/google";
 import Websites from "@/components/Websites";
 import { signOut, useSession } from "next-auth/react";
 import { Navbar } from "@/components";
+import { Discord } from "@/components";
+import { Footer } from "@/components/Footer";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -36,7 +38,11 @@ export default function Home() {
         <Navbar />
         <Hero />
       </main>
-      <Websites />
+      <div className="secondContent">
+        <Websites />
+        <Discord />
+        <Footer />
+      </div>
       {/* {session?.data?.user?.email} */}
     </>
   );

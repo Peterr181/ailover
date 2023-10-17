@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
+import { auth } from "../app/firebase";
 import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import CustomButton from "./CustomButton";
@@ -11,6 +12,10 @@ const NavBar = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const user = auth.currentUser;
+
+  const nickname = user && user.displayName;
 
   return (
     <header className="w-full  absolute z-10">
@@ -44,6 +49,7 @@ const NavBar = () => {
                 className="userAvatar"
               />
               <div>
+                <span className="pr-3">{nickname}</span>
                 <button
                   id="dropdownDefaultButton"
                   onClick={toggleDropdown}
