@@ -13,10 +13,10 @@ user is able to add his own website if there's no AI website in database, he can
 
 
 <h2 align="center">How it looks!</h2>
-<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/8f568efb-cc44-4caf-a50d-90ecc20d8e5e)</div>
-<div align="center"> ![obraz](https://github.com/Peterr181/ailover/assets/102172769/f934fa75-2960-4601-8c63-1553451bbc9f)</div>
-<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/a8a8004c-7101-4976-a165-bfee96a9531d)</div>
-<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/57f08832-95d9-4977-9b03-fa98a26c9e38)</div>
+![obraz](https://github.com/Peterr181/ailover/assets/102172769/8f568efb-cc44-4caf-a50d-90ecc20d8e5e)
+ ![obraz](https://github.com/Peterr181/ailover/assets/102172769/f934fa75-2960-4601-8c63-1553451bbc9f)
+![obraz](https://github.com/Peterr181/ailover/assets/102172769/a8a8004c-7101-4976-a165-bfee96a9531d)
+![obraz](https://github.com/Peterr181/ailover/assets/102172769/57f08832-95d9-4977-9b03-fa98a26c9e38)
 
 
 
