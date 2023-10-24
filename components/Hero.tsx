@@ -10,7 +10,7 @@ const Hero = () => {
 
   return (
     <>
-      <div className="hero mt-20 bg-line-b nk-mask">
+      <div className="hero  bg-line-b nk-mask">
         <div className="flex-1 pt-36 padding-x flex flex-col items-center justify-center">
           <h1 className="hero__title text-center">
             Discover the world of AI your gateway to the{" "}
@@ -24,13 +24,17 @@ const Hero = () => {
             it by yourself!
           </p>
           {session ? (
-            <CustomButton
-              title="Explore"
-              containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit"
-              handleClick={handleScroll}
-              btnType="button"
-              isSubmit={false}
-            />
+            <>
+              <a href="#websitesSection">
+                <CustomButton
+                  title="Explore"
+                  containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit"
+                  handleClick={handleScroll}
+                  btnType="button"
+                  isSubmit={false}
+                />
+              </a>
+            </>
           ) : null}
         </div>
       </div>

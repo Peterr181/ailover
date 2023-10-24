@@ -10,6 +10,9 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 :root {
   color-scheme: dark;
 }
@@ -96,109 +99,7 @@ body {
 .home__error-container {
   @apply mt-16 flex justify-center items-center flex-col gap-2;
 }
-/* END: Home styles */
 
-/* START: Car Card styles */
-.car-card {
-  @apply flex flex-col p-6 justify-center items-start text-black-100 bg-primary-blue-100 hover:bg-white hover:shadow-md rounded-3xl;
-}
-
-.car-card__content {
-  @apply w-full flex justify-between items-start gap-2;
-}
-
-.car-card__content-title {
-  @apply text-[22px] leading-[26px] font-bold capitalize;
-}
-
-.car-card__price {
-  @apply flex mt-6 text-[32px] leading-[38px] font-extrabold;
-}
-
-.car-card__price-dollar {
-  @apply self-start text-[14px] leading-[17px] font-semibold;
-}
-
-.car-card__price-day {
-  @apply self-end text-[14px] leading-[17px] font-medium;
-}
-
-.car-card__image {
-  @apply relative w-full h-40 my-3 object-contain;
-}
-
-.car-card__icon-container {
-  @apply flex group-hover:invisible w-full justify-between text-grey;
-}
-
-.car-card__icon {
-  @apply flex flex-col justify-center items-center gap-2;
-}
-
-.car-card__icon-text {
-  @apply text-[14px] leading-[17px];
-}
-
-.car-card__btn-container {
-  @apply hidden group-hover:flex absolute bottom-0 w-full z-10;
-}
-/* END: Car Card styles */
-
-/* START: Car Details styles */
-.car-details__dialog-panel {
-  @apply relative w-full max-w-lg max-h-[90vh] overflow-y-auto transform rounded-2xl bg-white p-6 text-left shadow-xl transition-all flex flex-col gap-5;
-}
-
-.car-details__close-btn {
-  @apply absolute top-2 right-2 z-10 w-fit p-2 bg-primary-blue-100 rounded-full;
-}
-
-.car-details__main-image {
-  @apply relative w-full h-40 bg-pattern bg-cover bg-center rounded-lg;
-}
-/* END: Car Details styles */
-
-/* START: Custom Filter styles */
-.custom-filter__btn {
-  @apply relative w-full min-w-[127px] flex justify-between items-center cursor-default rounded-lg bg-white py-2 px-3 text-left shadow-md sm:text-sm border;
-}
-
-.custom-filter__options {
-  @apply absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm;
-}
-/* END: Custom Filter styles */
-
-/* START: Footer styles */
-.footer {
-  @apply flex flex-col text-black-100  mt-5 border-t border-gray-100;
-}
-
-.footer__links-container {
-  @apply flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10;
-}
-
-.footer__rights {
-  @apply flex flex-col justify-start items-start gap-6;
-}
-
-.footer__links {
-  @apply flex-1 w-full flex md:justify-end flex-wrap max-md:mt-10 gap-20;
-}
-
-.footer__link {
-  @apply flex flex-col gap-6 text-base min-w-[170px];
-}
-
-.footer__copyrights {
-  @apply flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10;
-}
-
-.footer__copyrights-link {
-  @apply flex-1 flex sm:justify-end justify-center max-sm:mt-4 gap-10;
-}
-/* END: Footer styles */
-
-/* START: searchbar styles */
 .websiteItem {
   width: 100%;
   border-radius: 21px;
@@ -315,4 +216,192 @@ body {
 
 .downArrow {
   transform: translateY(3px);
+}
+
+.settingsContainer {
+  background-color: #0f172a;
+  height: 100vh;
+}
+
+.settingsWrapper {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.settingsOptions {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.settingsAvatar {
+  background-color: #1b2133;
+  border-radius: 21px;
+
+  padding: 3rem;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.userAvatarUpload {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.settingsOption {
+}
+
+.settingsInputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.uploadPhoto {
+}
+
+.settingsButtons {
+  display: flex;
+  gap: 1rem;
+}
+.saveChanges {
+  padding: 1rem;
+  background-color: green;
+  border-radius: 5px;
+}
+.imageHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.deleteAccount {
+  padding: 1rem;
+  background-color: red;
+  border-radius: 5px;
+}
+
+.profileContainer {
+  background-color: #0f172a;
+  height: 100vh;
+}
+
+.profileBasicData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  background-color: #1b2133;
+  border-radius: 21px;
+  text-align: center;
+
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 4;
+  grid-column-end: 2;
+
+  p {
+    margin-top: 0.7rem;
+  }
+}
+
+.userAvatarProfile {
+  width: 100px;
+  height: 100px;
+}
+
+.profileSmallStats {
+  padding: 2rem;
+  background-color: #1b2133;
+  border-radius: 21px;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+
+  grid-row-start: 1;
+  grid-column-start: 2;
+
+  grid-row-end: 1;
+  grid-column-end: 6;
+  height: 50%;
+}
+.profileSmallStatsData {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid #fff;
+  padding-right: 30px;
+  font-size: 1.3rem;
+}
+.profileSmallStatsDataBorder {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  align-items: center;
+}
+
+.profileGrid {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  column-gap: 3rem;
+}
+
+.profileAbout {
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  line-height: 3rem;
+}
+.profileStats {
+  width: 100%;
+}
+.recentActivity {
+  padding: 2rem;
+  background-color: #1b2133;
+  border-radius: 21px;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+
+  grid-row-start: 2;
+  grid-column-start: 2;
+
+  grid-row-end: 3;
+  grid-column-end: 6;
+}
+
+.profileWrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.buttonContainerProfile {
+  margin-left: auto;
+}
+
+.websiteAdded {
+  width: 100px;
+  height: 100px;
+}
+
+.websitesAdded {
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: #1b2133;
+  border-radius: 21px;
+  grid-row-start: 3;
+  grid-column-start: 2;
+
+  grid-row-end: 4;
+  grid-column-end: 6;
+}
+
+.contactsProfile {
+  font-size: 1.4rem;
 }

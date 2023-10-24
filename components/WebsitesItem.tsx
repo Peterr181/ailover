@@ -10,13 +10,13 @@ const WebsitesItem = ({
 }: WebsitesItemProps) => {
   return (
     <div className="websiteItem shadow-md text-center">
-      <div>
-        {/* <Image src={image} width={200} height={200} alt="aiwebsitelogo" /> */}
-        <span className="text-blue-600">{name}</span>
+      <div className="imageHeader">
+        <Image src={image} width={200} height={200} alt="aiwebsitelogo" />
+        <h2 className="font-bold mt-5">{name}</h2>
       </div>
-      <div className="text-center p-5 font-bold">
+      {/* <div className="text-center p-5 font-bold">
         <span className="">{description}</span>
-      </div>
+      </div> */}
     </div>
   );
 };

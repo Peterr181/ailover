@@ -6,6 +6,7 @@ export function Footer() {
       <Typography color="blue-gray" className="font-normal">
         &copy; AILOVER
       </Typography>
+
       <ul className="flex flex-wrap items-center gap-y-2 gap-x-8">
         <li>
           <Typography

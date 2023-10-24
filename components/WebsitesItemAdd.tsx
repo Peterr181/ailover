@@ -7,55 +7,76 @@ import { set, ref, onValue, remove, update } from "firebase/database";
 import { setterWebsites } from "../redux/slices/websitesSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import {
+  getStorage,
+  ref as storageRef,
+  uploadBytes,
+  getDownloadURL,
+} from "firebase/storage";
+import { storage } from "../app/firebase";
+import useFirebaseData from "@/hooks/useFirebaseData";
 
 const WebsitesItem = () => {
   const [showModal, setShowModal] = useState(false);
   const [websiteName, setWebsiteName] = useState<string>("");
-  const [websiteLink, setWebsiteLink] = useState("");
+  let [websiteLink, setWebsiteLink] = useState("");
   const [websiteDescription, setWebsiteDescription] = useState("");
   const [websites, setWebsites] = useState([]);
+  const [image, setImage] = useState<File | null>(null);
   const websitesTest = useSelector((state: any) => state.websites.websites);
-  const usersRef = ref(db, "users");
+  const userUid = auth.currentUser ? auth.currentUser.uid : null;
+
+  const { data, loading } = useFirebaseData("/websites");
+
   const dispatch = useDispatch();
   const handleSubmit = (e: any) => {
     e.preventDefault();
-
-    console.log("Website Name:", websiteName);
-    console.log("Website Link:", websiteLink);
-    console.log("Website Description:", websiteDescription);
-
     setShowModal(false);
   };
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if (auth.currentUser) {
-        onValue(ref(db, `/users`), (snapshot) => {
-          setWebsites([]);
-          const data = snapshot.val();
-          if (data !== null) {
-            Object.values(data).map((todo) => {
-              setWebsites((oldArray: any) => [...oldArray, todo]);
-            });
-          }
-        });
-      }
-    });
-  }, []);
-
-  const writeToDatabase = () => {
-    const uidd = uid();
+  const writeToDatabase = async () => {
     if (auth.currentUser) {
-      set(ref(db, `/users/${uidd}`), {
-        websiteName: websiteName,
-        websiteDescription,
-        websiteLink,
-        uidd: uidd,
-      });
+      try {
+        const userUid = auth.currentUser.uid;
+        const uidd = uid();
+        if (
+          websiteLink &&
+          !websiteLink.startsWith("http://") &&
+          !websiteLink.startsWith("https://")
+        ) {
+          websiteLink = `https://${websiteLink}`;
+        }
+
+        if (image) {
+          const imageRef = storageRef(
+            storage,
+            `website-images/${userUid}/${uidd}/${image.name}`
+          );
+
+          await uploadBytes(imageRef, image);
+          const imageUrl = await getDownloadURL(imageRef);
+
+          // Store the website data under the user's UUID
+          set(ref(db, `/websites/${uidd}`), {
+            websiteName: websiteName,
+            websiteDescription: websiteDescription,
+            websiteLink: websiteLink,
+            imageUrl: imageUrl,
+            addedBy: userUid,
+          });
+          update(ref(db, `/users/${userUid}/websitesAdded`), {
+            [uidd]: true,
+          });
+        } else {
+          throw new Error("Image is required.");
+        }
+      } catch (error) {
+        console.error("Error uploading image:", error);
+      }
     }
   };
 
-  dispatch(setterWebsites(websites));
+  dispatch(setterWebsites(data));
 
   return (
     <div className="websiteItemAdd ">
@@ -89,6 +110,7 @@ const WebsitesItem = () => {
               value={websiteLink}
               onChange={(e) => setWebsiteLink(e.target.value)}
             />
+
             <p className="text-white pb-1 pt-3">Website description</p>
             <input
               type="search"
@@ -98,6 +120,17 @@ const WebsitesItem = () => {
               value={websiteDescription}
               onChange={(e) => setWebsiteDescription(e.target.value)}
             />
+            <p className="text-white pb-1 pt-3">Website image</p>
+            <input
+              type="file"
+              onChange={(e) => {
+                if (e.target.files && e.target.files[0]) {
+                  setImage(e.target.files[0]);
+                }
+              }}
+              className="text-sm block w-full p-2 pl-3 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none"
+            />
+
             <div className="text-center">
               <button
                 className="text-center text-white pt-3"
