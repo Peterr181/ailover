@@ -5,6 +5,22 @@
 [![My Skills](https://skillicons.dev/icons?i=react,next,firebase,typescript,tailwind)](https://skillicons.dev)
 
 
+<h2 align="center">How it works</h2>
+<p align="center">This is simple website where user can create his own account, change settings of his account such as profile description status, image and more. Main idea is to store AI websites on my website
+user is able to add his own website if there's no AI website in database, he can also see what websites he added and more. All of these stuff is stored in firebase realtime database so it's full-stack app.
+
+</p>
+
+
+<h2 align="center">How it looks!</h2>
+<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/8f568efb-cc44-4caf-a50d-90ecc20d8e5e)</div>
+<div align="center"> ![obraz](https://github.com/Peterr181/ailover/assets/102172769/f934fa75-2960-4601-8c63-1553451bbc9f)</div>
+<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/a8a8004c-7101-4976-a165-bfee96a9531d)</div>
+<div align="center">![obraz](https://github.com/Peterr181/ailover/assets/102172769/57f08832-95d9-4977-9b03-fa98a26c9e38)</div>
+
+
+
+
 
 
 <h2 align="center">Live version!</h2>
@@ -20,10 +36,12 @@
 
 
 :construction_worker: TO-DO
+<p align="center">ADD all users section</p>
+<p align="center">ADD AI website more details description</p>
 
 
 
-:smiley_cat: APIS used in this application
+
 
 
 
