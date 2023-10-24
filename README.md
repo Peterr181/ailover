@@ -15,6 +15,15 @@ user is able to add his own website if there's no AI website in database, he can
 </p>
 
 
+<h2 align="center">Main functionalities: </h2>
+<p align="center">Firebase authorization (creating account by e-mail and password)</p>
+<p align="center">Browsing newest AI websites</p>
+<p align="center">Adding new AI websites on website</p>
+<p align="center">Edit profile option</p>
+<p align="center">All list of users that are registered and their statistics etc, adding new websites and more</p>
+<p align="center">New functionalities still in progress...</p>
+
+
 <h2 align="center">How it looks!</h2>
 
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/8f568efb-cc44-4caf-a50d-90ecc20d8e5e)
