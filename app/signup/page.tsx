@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { auth } from "../firebase";
+import Link from "next/link";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -124,18 +125,20 @@ export default function Signup() {
             </div>
 
             <div>
-              <button
-                disabled={
-                  !email ||
-                  !password ||
-                  !passwordAgain ||
-                  password !== passwordAgain
-                }
-                onClick={() => signup()}
-                className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                Sign Up
-              </button>
+              <Link href="/signin">
+                <button
+                  disabled={
+                    !email ||
+                    !password ||
+                    !passwordAgain ||
+                    password !== passwordAgain
+                  }
+                  onClick={() => signup()}
+                  className="disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                >
+                  Sign Up
+                </button>
+              </Link>
               <p className="mt-10 text-center text-sm text-gray-400">
                 Already a member?{" "}
                 <button

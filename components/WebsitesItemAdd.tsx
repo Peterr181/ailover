@@ -15,8 +15,10 @@ import {
 } from "firebase/storage";
 import { storage } from "../app/firebase";
 import useFirebaseData from "@/hooks/useFirebaseData";
+import { useSession } from "next-auth/react";
 
 const WebsitesItem = () => {
+  const { data: session } = useSession();
   const [showModal, setShowModal] = useState(false);
   const [websiteName, setWebsiteName] = useState<string>("");
   let [websiteLink, setWebsiteLink] = useState("");
@@ -81,12 +83,16 @@ const WebsitesItem = () => {
   return (
     <div className="websiteItemAdd ">
       <div className="flex justify-center align-center mt-14">
-        <button
-          onClick={() => setShowModal(true)}
-          className="text-white right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Add new
-        </button>
+        {session ? (
+          <button
+            onClick={() => setShowModal(true)}
+            className="text-white right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xl px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Add new
+          </button>
+        ) : (
+          <p>Login to add website!</p>
+        )}
       </div>
 
       {showModal && (

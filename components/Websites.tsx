@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import {
   CustomButton,
@@ -11,29 +10,33 @@ import { websites, websitesData } from "@/constants";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import Loader from "./Loader";
+import useFirebaseData from "@/hooks/useFirebaseData";
+
 interface Website {
   websiteName: string;
   websiteDescription: string;
   imageUrl: string;
   websiteLink: string;
 }
+
 const Websites = () => {
   const [inputValue, setInputValue] = useState("");
   const websitesDb = useSelector((state: any) => state.websites.websites);
-
-  const [filteredWebsites, setFilteredWebsites] = useState(websitesDb);
+  const { data, loading } = useFirebaseData("/websites");
+  const [filteredWebsites, setFilteredWebsites] = useState(data);
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    filterWebsites();
+  }, [inputValue, websitesDb]);
+
   const filterWebsites = () => {
     const filtered = websitesDb.filter((item: Website) =>
       item.websiteName.toLowerCase().includes(inputValue.toLowerCase())
     );
     setFilteredWebsites(filtered);
   };
-  useEffect(() => {
-    setFilteredWebsites(websitesDb);
-    setIsLoading(false);
-  }, [websitesDb]);
-  const showWebsitesItemAdd = !isLoading;
+
   return (
     <section className="websitesColor" id="websitesSection">
       <div className="max-width pt-[100px] pb-[100px]">
@@ -48,12 +51,11 @@ const Websites = () => {
             <CustomInput
               setInputValue={setInputValue}
               inputValue={inputValue}
-              filterWebsites={filterWebsites}
             />
           </div>
         </div>
         <WebsitesItemAdd />
-        {isLoading ? (
+        {loading ? (
           <div className="flex justify-center items-center h-screen">
             <Loader />
           </div>

@@ -23,19 +23,18 @@ const Hero = () => {
             Collection of Websites and Resources. Don't wait too much, just test
             it by yourself!
           </p>
-          {session ? (
-            <>
-              <a href="#websitesSection">
-                <CustomButton
-                  title="Explore"
-                  containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit"
-                  handleClick={handleScroll}
-                  btnType="button"
-                  isSubmit={false}
-                />
-              </a>
-            </>
-          ) : null}
+
+          <>
+            <a href="#websitesSection">
+              <CustomButton
+                title="Explore"
+                containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit"
+                handleClick={handleScroll}
+                btnType="button"
+                isSubmit={false}
+              />
+            </a>
+          </>
         </div>
       </div>
     </>

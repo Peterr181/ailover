@@ -23,12 +23,6 @@ const backgroundStyle = {
 };
 
 export default function Home() {
-  const session = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/signin");
-    },
-  });
   return (
     <>
       <main

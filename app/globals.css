@@ -18,6 +18,7 @@ html {
 }
 body {
   color: #fffafa;
+  background-color: #0f172a;
 }
 
 .mainText {
@@ -127,10 +128,11 @@ body {
 .userProfileContainer {
   display: flex;
   align-items: center;
+  gap: 0.7rem;
 }
 .userAvatar {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -138,7 +140,10 @@ body {
   transform: translateY(-5px);
 }
 .loader {
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
 }
 
 .websiteItemAdd {
@@ -220,7 +225,6 @@ body {
 
 .settingsContainer {
   background-color: #0f172a;
-  height: 100vh;
 }
 
 .settingsWrapper {
@@ -237,7 +241,7 @@ body {
 .settingsAvatar {
   background-color: #1b2133;
   border-radius: 21px;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   padding: 3rem;
   font-weight: bold;
 
@@ -298,7 +302,7 @@ body {
   background-color: #1b2133;
   border-radius: 21px;
   text-align: center;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   grid-row-start: 1;
   grid-column-start: 1;
 
@@ -311,8 +315,19 @@ body {
 }
 
 .userAvatarProfile {
-  width: 100px;
-  height: 100px;
+  width: 100%;
+}
+
+.profileSmallStatistics {
+  padding: 2rem;
+  background-color: #1b2133;
+  border-radius: 21px;
+  display: flex;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  grid-row-end: 1;
+  grid-column-end: 6;
 }
 
 .profileSmallStats {
@@ -325,10 +340,9 @@ body {
 
   grid-row-start: 1;
   grid-column-start: 2;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   grid-row-end: 1;
   grid-column-end: 6;
-  height: 50%;
 }
 .profileSmallStatsData {
   display: flex;
@@ -338,13 +352,27 @@ body {
   padding-right: 30px;
   font-size: 1.3rem;
 }
+
+.profileSmallStatsData2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-right: 30px;
+  font-size: 1.4rem;
+}
 .profileSmallStatsDataBorder {
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
   align-items: center;
 }
-
+.profileSmallStatsDataBorder2 {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  align-items: center;
+}
 .profileGrid {
   display: grid;
 
@@ -371,7 +399,7 @@ body {
 
   grid-row-start: 2;
   grid-column-start: 2;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   grid-row-end: 3;
   grid-column-end: 6;
 }
@@ -383,6 +411,11 @@ body {
 
 .buttonContainerProfile {
   margin-left: auto;
+}
+.buttonContainerProfileWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .websiteAdded {
@@ -397,11 +430,83 @@ body {
   border-radius: 21px;
   grid-row-start: 3;
   grid-column-start: 2;
-
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   grid-row-end: 4;
   grid-column-end: 6;
 }
 
 .contactsProfile {
   font-size: 1.4rem;
+}
+
+.favWebsite {
+  background-color: #0f172a;
+  border-radius: 10px;
+}
+
+.usersContainer {
+}
+
+.usersWrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.userProfilesContainer {
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.userProfilesImage {
+  width: 150px;
+  height: 150px;
+}
+
+.userProfileBox {
+  border-radius: 21px;
+  padding: 1rem;
+  background-color: #1b2133;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+.userProfileBox:hover {
+  transform: translateY(-10px);
+}
+
+.littleBg {
+  background-color: #1b2133;
+  border: 2px solid rgba(82, 82, 89, 0.68);
+}
+
+.selected {
+  box-shadow: rgb(62, 84, 163) 0px 5px 15px;
+}
+
+.littleBg {
+  transition: transform 0.3s ease-in-out;
+}
+
+.littleBg:hover {
+  transform: scale(1.05);
+}
+
+.slide-in {
+  animation: slide-in 1s ease forwards;
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

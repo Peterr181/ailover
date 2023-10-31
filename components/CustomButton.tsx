@@ -1,7 +1,4 @@
-"use client";
-
 import React from "react";
-import Image from "next/image";
 import { CustomButtonProps } from "@/types";
 
 const CustomButton = ({
@@ -10,6 +7,7 @@ const CustomButton = ({
   containerStyles,
   btnType,
   isSubmit,
+  icon, // Make the icon prop optional
 }: CustomButtonProps) => {
   return (
     <button
@@ -18,7 +16,8 @@ const CustomButton = ({
       className={`custom-btn  ${containerStyles}`}
       onClick={handleClick}
     >
-      <span className={"flex-1 font-bold "}>{title}</span>
+      {title}
+      {icon && <span className="icon ml-2">{icon}</span>}
     </button>
   );
 };

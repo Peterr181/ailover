@@ -5,23 +5,32 @@ import Image from "next/image";
 import { useSession, signIn, signOut } from "next-auth/react";
 import CustomButton from "./CustomButton";
 import { useRouter } from "next/navigation";
-import { AiOutlineHome, AiOutlineLogout, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineHome,
+  AiOutlineLogout,
+  AiOutlineUser,
+  AiOutlineArrowDown,
+} from "react-icons/ai";
+import { FiUsers } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
+import useFirebaseData from "@/hooks/useFirebaseData";
 
 const NavBar = () => {
   const { data: session } = useSession();
+  const userUid = auth.currentUser ? auth.currentUser.uid : null;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const router = useRouter();
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-
+  const { data, loading } = useFirebaseData("/usersPersonalData");
+  const currentUserWebsites = data.filter((user) => user.userUid === userUid);
   const user = auth.currentUser;
+
+  console.log(data);
 
   const nickname = user && user.displayName;
   const status = user && user.phoneNumber;
-
-  console.log(user && user.uid);
 
   return (
     <header className="w-full   z-10">
@@ -31,11 +40,11 @@ const NavBar = () => {
         </Link>
 
         {!session && (
-          <Link href="/register">
+          <Link href="/signup">
             <CustomButton
               title="Sign in"
               btnType="button"
-              containerStyles="bg-blue-600 text-white rounded-full hover:bg-blue-800 transition "
+              containerStyles="bg-blue-600 font-bold text-white rounded-full hover:bg-blue-800 transition "
             />
           </Link>
         )}
@@ -50,7 +59,7 @@ const NavBar = () => {
           <>
             <div className="userProfileContainer">
               <img
-                src="user-avatar.png"
+                src={currentUserWebsites[0]?.imageUrl || "./user-avatar.png"}
                 alt="user profile"
                 className="userAvatar"
               />
@@ -61,11 +70,7 @@ const NavBar = () => {
                   onClick={toggleDropdown}
                   type="button"
                 >
-                  <img
-                    src="down-arrow.png"
-                    alt="down arrow"
-                    className="downArrow"
-                  />
+                  <AiOutlineArrowDown />
                 </button>
                 <div
                   id="dropdown"
@@ -121,6 +126,22 @@ const NavBar = () => {
                           onClick={() => router.push("/settings")}
                         >
                           Settings
+                        </div>
+                      </div>
+                    </div>
+                    <div className="w-full">
+                      <div className="flex items-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
+                        <div
+                          onClick={() => router.push("/users")}
+                          className="block px-4 py-2 cursor-pointer"
+                        >
+                          <FiUsers />
+                        </div>
+                        <div
+                          className="flex-grow pl-4"
+                          onClick={() => router.push("/users")}
+                        >
+                          Users
                         </div>
                       </div>
                     </div>
