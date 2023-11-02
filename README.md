@@ -21,6 +21,7 @@ user is able to add his own website if there's no AI website in database, he can
 <p align="center">Adding new AI websites on website</p>
 <p align="center">Edit profile option</p>
 <p align="center">All list of users that are registered and their statistics etc, adding new websites and more</p>
+<p align="center">Initial settings when user registered his account he has 3 steps to fill in to get his profile full completed</p>
 <p align="center">New functionalities still in progress...</p>
 
 
