@@ -33,6 +33,8 @@ user is able to add his own website if there's no AI website in database, he can
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/f934fa75-2960-4601-8c63-1553451bbc9f)
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/a8a8004c-7101-4976-a165-bfee96a9531d)
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/57f08832-95d9-4977-9b03-fa98a26c9e38)
+![obraz](https://github.com/Peterr181/ailover/assets/102172769/1f8e1d4a-6f91-4882-b4e2-d09529f0aaf5)
+
 
 
 
