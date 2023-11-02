@@ -20,6 +20,16 @@ const page = () => {
   const userGithub = userData && userData[2];
   console.log(userGithub);
 
+  const [
+    description,
+    favWebsite,
+    githubLink,
+    imageUrl,
+    stars,
+    status,
+    userNickname,
+  ] = userData;
+
   return (
     <>
       <div className="profileContainer">
@@ -27,26 +37,27 @@ const page = () => {
         <div className="profileWrapper">
           <div className="profileGrid">
             <div className="profileBasicData relative">
-              {!userData[3] ? (
+              {imageUrl ? (
                 <img
-                  src={"./user-avatar.png"}
+                  src={imageUrl}
                   alt="user avatar"
                   className="userAvatarProfile"
                 />
               ) : (
                 <img
-                  src={userData[3]}
+                  src={"./user-avatar.png"}
                   alt="user avatar"
                   className="userAvatarProfile"
                 />
               )}
               <span className="profileAbout">
-                {userData[5]} , {userData[4]}
+                {userNickname} , {status}
               </span>
-              <p className="text-gray-500">{userData[0]}</p>
-              <p className="absolute bottom-0 p-10">
+              <p className="text-gray-500">{description}</p>
+
+              <p className="">
                 Favourite website <br />{" "}
-                <span className="text-blue-500">{userData[1]}</span>
+                <span className="text-blue-500">{favWebsite}</span>
               </p>
             </div>
 
@@ -69,9 +80,9 @@ const page = () => {
               </div>
               <div className="buttonContainerProfile">
                 <div className="buttonContainerProfileWrapper">
-                  {userData[3] && (
+                  {githubLink && (
                     <>
-                      <Link href={userData[3]}>
+                      <Link href={githubLink}>
                         <CustomButton
                           title="Github"
                           containerStyles="bg-transparent text-white rounded-full  border border-blue-600 text-primary-blue text-inherit font-bold"

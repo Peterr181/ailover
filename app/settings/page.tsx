@@ -6,7 +6,7 @@ import { auth, db, storage } from "../firebase";
 import { uid } from "uid";
 import React from "react";
 import { useSession } from "next-auth/react";
-import { ref, set } from "firebase/database";
+import { get, ref, set, update } from "firebase/database";
 import useFirebaseData from "@/hooks/useFirebaseData";
 import {
   getStorage,
@@ -42,30 +42,40 @@ const settings = () => {
     const userUid = auth.currentUser ? auth.currentUser.uid : null;
     if (auth.currentUser) {
       try {
+        await updateProfile(auth.currentUser, { displayName: userNickname });
         if (image) {
-          await updateProfile(auth.currentUser, { displayName: userNickname });
-
           const imageRef = storageRef(
             storage,
             `website-images/${userUid}/${uidd}/${image.name}`
           );
 
           await uploadBytes(imageRef, image);
-          const imageUrl = await getDownloadURL(imageRef);
 
-          set(ref(db, `/usersPersonalData/${userUid}`), {
-            userNickname: userNickname,
-            status: status,
-            githubLink: githubLink,
-            description: description,
-            favWebsite: favWebsite,
-            userUid: userUid,
-            imageUrl: imageUrl,
-            stars: 0,
-          });
+          const imageUrl = await getDownloadURL(imageRef);
         }
+        const userDataRef = ref(db, `/usersPersonalData/${userUid}`);
+        const userDataSnapshot = await get(userDataRef);
+        const userData = userDataSnapshot.val();
+
+        if (userNickname !== "") {
+          userData.userNickname = userNickname;
+        }
+        if (favWebsite !== "") {
+          userData.favoriteWebsite = favWebsite;
+        }
+        if (status !== "") {
+          userData.status = status;
+        }
+        if (githubLink !== "") {
+          userData.githubLink = githubLink;
+        }
+        if (description !== "") {
+          userData.description = description;
+        }
+
+        update(userDataRef, userData);
       } catch (error) {
-        console.error("Error updating user nickname and other data: ", error);
+        console.error("Error updating user data: ", error);
       }
     }
   };

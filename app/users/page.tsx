@@ -17,6 +17,7 @@ const page = () => {
           alt="user image"
           className="userProfilesImage"
         />
+        <p className="mt-5 font-bold">{item.userNickname}</p>
       </Link>
     </div>
   ));

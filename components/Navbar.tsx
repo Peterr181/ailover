@@ -25,12 +25,9 @@ const NavBar = () => {
   };
   const { data, loading } = useFirebaseData("/usersPersonalData");
   const currentUserWebsites = data.filter((user) => user.userUid === userUid);
+
   const user = auth.currentUser;
-
-  console.log(data);
-
-  const nickname = user && user.displayName;
-  const status = user && user.phoneNumber;
+  const userNickname = currentUserWebsites[0]?.userNickname;
 
   return (
     <header className="w-full   z-10">
@@ -64,7 +61,7 @@ const NavBar = () => {
                 className="userAvatar"
               />
               <div>
-                <span className="pr-3">{nickname}</span>
+                <span className="pr-3">{userNickname}</span>
                 <button
                   id="dropdownDefaultButton"
                   onClick={toggleDropdown}

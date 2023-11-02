@@ -40,6 +40,7 @@ const SetUserImage = ({ setActiveStep, setProgress }: SetUserImageProps) => {
           const userDataRef = ref(db, `/usersPersonalData/${userUid}`);
           const userDataSnapshot = await get(userDataRef);
           const userData = userDataSnapshot.val();
+          console.log(userData);
 
           userData.imageUrl = imageUrl;
 
