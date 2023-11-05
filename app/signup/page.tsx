@@ -18,7 +18,6 @@ export default function Signup() {
         // Update the user's display name (nickname)
         updateProfile(user, { displayName: nickname }).then(() => {
           // Successfully added the nickname
-          console.log(`Nickname ${nickname} added to user profile`);
         });
       })
       .catch((error) => {

@@ -18,8 +18,6 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_DB_APPID,
 };
 
-console.log(process.env.NEXT_PUBLIC_DB_APIKEY);
-
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const auth = getAuth();

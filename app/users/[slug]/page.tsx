@@ -25,8 +25,6 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
     `/usersPersonalData/opinions/${params.slug}`
   );
 
-  console.log(opinionsData);
-
   const [fallingStar, setFallingStar] = useState(false);
 
   const userWebsites = websitesData.filter(
@@ -69,10 +67,7 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
 
       try {
         await set(newOpinionRef, newOpinionData);
-        console.log("Opinion added successfully");
-      } catch (error) {
-        console.error("Error adding opinion:", error);
-      }
+      } catch (error) {}
     }
   };
 
@@ -116,8 +111,8 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
               <span className="profileAbout">
                 {nickname} , {status}
               </span>
-              <p className="text-gray-500">{description}</p>
-              <p className="pt-10">
+              <p className="text-gray-500 mt-3">{description}</p>
+              <p className="absolute bottom-3">
                 Favourite website <br />{" "}
                 <span className="text-blue-500">{favWebsite}</span>
               </p>
@@ -167,9 +162,9 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
             <div className="recentActivity">
               <p className="text-gray-500">Websites Added</p>
               <div className="mt-5 flex gap-5">
-                {userWebsites.map((website) => (
+                {userWebsites.map((website, index) => (
                   <img
-                    key={website.websiteId}
+                    key={index}
                     src={website.imageUrl}
                     alt="website"
                     className="websiteAdded"
@@ -236,8 +231,11 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
                 )}
               </div>
               <div className="flex items-center gap-10">
-                {opinionsData.map((opinion) => (
-                  <div className="flex items-center text-2xl opinionBackground rounded-full  border border-blue-600">
+                {opinionsData.map((opinion, index) => (
+                  <div
+                    className="flex items-center text-2xl opinionBackground rounded-full  border border-blue-600"
+                    key={index}
+                  >
                     <span>{opinion.opinionStars}</span>
                     <span>
                       <AiFillStar color="yellow" />

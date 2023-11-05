@@ -9,7 +9,6 @@ interface CustomInputProps {
 const CustomInput = ({ setInputValue, inputValue }: CustomInputProps) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Input Value:", inputValue);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,7 +18,6 @@ const CustomInput = ({ setInputValue, inputValue }: CustomInputProps) => {
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      console.log("Input Value:", inputValue);
     }
   };
 

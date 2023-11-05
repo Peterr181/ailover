@@ -28,7 +28,7 @@ const settings = () => {
   const user = (auth.currentUser as CustomUser) || null;
   const [image, setImage] = useState<File | null>(null);
   const nickname = user && user.displayName;
-  console.log(data);
+
   const [userNickname, setUserNickname] = useState("");
 
   const [status, setStatus] = useState("");

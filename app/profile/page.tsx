@@ -18,7 +18,7 @@ const page = () => {
   );
 
   const userGithub = userData && userData[2];
-  console.log(userGithub);
+
 
   const [
     description,
@@ -53,9 +53,9 @@ const page = () => {
               <span className="profileAbout">
                 {userNickname} , {status}
               </span>
-              <p className="text-gray-500">{description}</p>
+              <p className="text-gray-500 mt-3">{description}</p>
 
-              <p className="">
+              <p className="absolute bottom-3">
                 Favourite website <br />{" "}
                 <span className="text-blue-500">{favWebsite}</span>
               </p>
@@ -104,9 +104,9 @@ const page = () => {
             <div className="recentActivity">
               <p className="text-gray-500">Websites Added</p>
               <div className="mt-5 flex gap-5">
-                {currentUserWebsites.map((website) => (
+                {currentUserWebsites.map((website,index) => (
                   <img
-                    key={website.websiteId}
+                    key={index}
                     src={website.imageUrl}
                     alt="website"
                     className="websiteAdded"
