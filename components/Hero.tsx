@@ -28,7 +28,7 @@ const Hero = () => {
             <a href="#websitesSection">
               <CustomButton
                 title="Explore"
-                containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit"
+                containerStyles="bg-transparent text-white rounded-full mt-10 border border-blue-600 text-primary-blue text-inherit font-bold"
                 handleClick={handleScroll}
                 btnType="button"
                 isSubmit={false}

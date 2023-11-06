@@ -5,7 +5,7 @@ import "./globals.css";
 import SessionProvider from "./SessionProvider";
 
 export const metadata = {
-  title: "AI generator",
+  title: "AILOVER",
   description: "Discover different AI websites",
 };
 
