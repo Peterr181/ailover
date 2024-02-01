@@ -22,13 +22,10 @@ type CustomUser = User & {
   }) => Promise<void>;
 };
 const settings = () => {
-  const { data: session } = useSession();
-  const userUid = auth.currentUser ? auth.currentUser.uid : null;
-  const { data, loading } = useFirebaseData(`/usersPersonalData/{userUid}`);
   const user = (auth.currentUser as CustomUser) || null;
   const [image, setImage] = useState<File | null>(null);
   const nickname = user && user.displayName;
-  console.log(data);
+
   const [userNickname, setUserNickname] = useState("");
 
   const [status, setStatus] = useState("");

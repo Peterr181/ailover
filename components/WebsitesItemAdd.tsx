@@ -65,6 +65,7 @@ const WebsitesItem = () => {
             websiteLink: websiteLink,
             imageUrl: imageUrl,
             addedBy: userUid,
+            authenticated: false,
           });
           update(ref(db, `/users/${userUid}/websitesAdded`), {
             [uidd]: true,

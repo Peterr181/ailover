@@ -58,7 +58,7 @@ body {
 .hero {
   @apply flex xl:flex-row flex-col gap-5  max-w-[1150px] mx-auto;
 
-  background-image: url(../public/hero.jpg);
+  background-image: url("../public/hero.jpg");
 }
 
 .hero__title {
@@ -176,18 +176,6 @@ body {
 
   background-color: rgb(62, 84, 163);
 }
-/* .discordWrapper::before {
-  content: "";
-  background-image: url("/public/discordBehind.svg");
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: red;
-  opacity: 1;
-  position: absolute;
-  width: 100%;
-
-  z-index: 1000;
-} */
 
 .discordLogo {
   display: flex;
@@ -195,7 +183,6 @@ body {
 }
 
 .dcButton {
-  moz-box-align: center;
   align-items: center;
   border: 0px;
   border-radius: 10rem;
@@ -308,10 +295,6 @@ body {
 
   grid-row-end: 4;
   grid-column-end: 2;
-
-  p {
-    margin-top: 0.7rem;
-  }
 }
 
 .userAvatarProfile {
@@ -335,8 +318,8 @@ body {
   background-color: #1b2133;
   border-radius: 21px;
   display: flex;
-  align-items: center;
-  gap: 3rem;
+
+  gap: 1rem;
 
   grid-row-start: 1;
   grid-column-start: 2;
@@ -348,9 +331,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-right: 1px solid #fff;
+
   padding-right: 30px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .profileSmallStatsData2 {
@@ -378,7 +361,7 @@ body {
 
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-
+  height: 75vh;
   column-gap: 3rem;
 }
 
@@ -540,4 +523,19 @@ body {
   background-color: transparent;
   border-radius: 11px;
   cursor: pointer;
+}
+
+.opinionContentInModal {
+}
+.spaced-paragraph {
+  /* Adjust the spacing value as needed */
+  overflow-wrap: break-word;
+}
+
+.opinionDesc {
+  width: 50%;
+}
+
+.currentUser {
+  box-shadow: blue 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }

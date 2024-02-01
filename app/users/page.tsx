@@ -5,13 +5,26 @@ import NavBar from "@/components/Navbar";
 import useFirebaseData from "@/hooks/useFirebaseData";
 import Loader from "@/components/Loader";
 import Link from "next/link";
+import { uid } from "uid";
+import { auth } from "../firebase";
+import { useRouter } from "next/router";
 
 const page = () => {
   const { data, loading } = useFirebaseData("/usersPersonalData");
+  const uidd = uid();
+  const userUid = auth.currentUser ? auth.currentUser.uid : null;
 
   const userProfiles = data.map((item) => (
-    <div id={item.userUid} className="userProfileBox">
-      <Link href={`/users/${item.userUid}`}>
+    <div
+      id={item.userUid}
+      className={`userProfileBox${
+        item.userUid === userUid ? " currentUser" : ""
+      }`}
+      key={item.userUid}
+    >
+      <Link
+        href={item.userUid === userUid ? "/profile" : `/users/${item.userUid}`}
+      >
         <img
           src={item.imageUrl}
           alt="user image"

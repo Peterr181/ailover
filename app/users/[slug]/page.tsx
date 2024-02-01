@@ -13,7 +13,12 @@ import ReactStars from "react-rating-star-with-type";
 
 const UserPage = ({ params }: { params: { slug: string } }) => {
   const [showModal, setShowModal] = useState(false);
+  const [showModalOpinion, setShowModalOpinion] = useState(false);
+  const [selectedOpinionDescription, setSelectedOpinionDescription] =
+    useState("");
+  const [selectedNumberOfStars, setSelectedNumberOfStars] = useState(0);
   const [opinionMessage, setOpinionMessage] = useState("");
+  const [selectedAddedBy, setSelectedAddedBy] = useState("");
   const [opinionStars, setOpinionStars] = useState<number>(0);
   const { data, loading } = useFirebaseData(
     `/usersPersonalData/${params.slug}`
@@ -24,8 +29,6 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
   const { data: opinionsData, loading: loadingOpinions } = useFirebaseData(
     `/usersPersonalData/opinions/${params.slug}`
   );
-
-  console.log(opinionsData);
 
   const [fallingStar, setFallingStar] = useState(false);
 
@@ -57,14 +60,16 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
   };
 
   const addOpinion = async () => {
+    const uidd = uid();
+    const userUid = auth.currentUser ? auth.currentUser.uid : null;
     if (auth.currentUser) {
       const opinionsRef = ref(db, `/usersPersonalData/opinions/${params.slug}`);
-      const newOpinionRef = push(opinionsRef); // Generate a unique ID for the new opinion
+      const newOpinionRef = push(opinionsRef);
 
       const newOpinionData = {
         opinionMessage: opinionMessage,
         opinionStars: opinionStars,
-        userUid: params.slug,
+        userUid: userUid,
       };
 
       try {
@@ -75,6 +80,16 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
       }
     }
   };
+
+  function renderStars(numberOfStars: number) {
+    const starIcons = [];
+
+    for (let i = 0; i < numberOfStars; i++) {
+      starIcons.push(<AiFillStar key={i} color="yellow" />);
+    }
+
+    return starIcons;
+  }
 
   return (
     <>
@@ -116,8 +131,8 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
               <span className="profileAbout">
                 {nickname} , {status}
               </span>
-              <p className="text-gray-500">{description}</p>
-              <p className="pt-10">
+              <p className="text-gray-500 mt-3">{description}</p>
+              <p className="absolute bottom-3">
                 Favourite website <br />{" "}
                 <span className="text-blue-500">{favWebsite}</span>
               </p>
@@ -136,7 +151,9 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
                 <p>Contacts</p>
               </div>
               <div className="profileSmallStatsDataBorder2">
-                <p>{stars}</p>
+                <p>
+                  {stars && stars} {!stars && 0}
+                </p>
                 <p>Stars</p>
               </div>
               <div className="buttonContainerProfile">
@@ -167,9 +184,9 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
             <div className="recentActivity">
               <p className="text-gray-500">Websites Added</p>
               <div className="mt-5 flex gap-5">
-                {userWebsites.map((website) => (
+                {userWebsites.map((website, index) => (
                   <img
-                    key={website.websiteId}
+                    key={index}
                     src={website.imageUrl}
                     alt="website"
                     className="websiteAdded"
@@ -237,13 +254,59 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
               </div>
               <div className="flex items-center gap-10">
                 {opinionsData.map((opinion) => (
-                  <div className="flex items-center text-2xl opinionBackground rounded-full  border border-blue-600">
+                  <div
+                    key={opinion.userUid}
+                    onClick={() => {
+                      setShowModalOpinion(true);
+                      setSelectedOpinionDescription(opinion.opinionMessage);
+                      setSelectedNumberOfStars(opinion.opinionStars);
+
+                      const userRef = ref(
+                        db,
+                        `/usersPersonalData/${opinion.userUid}`
+                      );
+                      get(userRef)
+                        .then((userSnapshot) => {
+                          if (userSnapshot.exists()) {
+                            const userData = userSnapshot.val();
+                            const userNickname = userData.userNickname;
+
+                            // Set the user's nickname in the state
+                            setSelectedAddedBy(userNickname);
+                          }
+                        })
+                        .catch((error) => {
+                          console.error("Error fetching user data:", error);
+                        });
+                    }}
+                    className="flex items-center text-2xl opinionBackground rounded-full  border border-blue-600"
+                  >
                     <span>{opinion.opinionStars}</span>
                     <span>
                       <AiFillStar color="yellow" />
                     </span>
                   </div>
                 ))}
+                {showModalOpinion && (
+                  <WebsiteModal onClose={() => setShowModalOpinion(false)}>
+                    <div className="opinionContentInModal">
+                      <div className="flex gap-1 justify-center text-2xl">
+                        {renderStars(selectedNumberOfStars)}
+                      </div>
+                      <p className="text-1xl mt-5 spaced-paragraph">
+                        {selectedOpinionDescription}
+                      </p>
+
+                      <p className=" mt-5 flex justify-center">
+                        Added by{" "}
+                        <span className="text-blue-500 ml-2 font-bold">
+                          {" "}
+                          {selectedAddedBy}
+                        </span>
+                      </p>
+                    </div>
+                  </WebsiteModal>
+                )}
               </div>
             </div>
           </div>

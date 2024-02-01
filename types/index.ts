@@ -14,4 +14,5 @@ export interface WebsitesItemProps {
   name: string;
   description: string;
   link?: string;
+  authenticated: boolean;
 }

@@ -16,7 +16,6 @@ const SocialMediasInfo = ({ setProgress, setActiveStep }: SocialMediasInfo) => {
 
   const handleContinue = () => {
     if (selectedMedia) {
-      console.log("Selected Media:", selectedMedia);
       setProgress(33.33);
       setActiveStep(2);
     } else {

@@ -22,6 +22,8 @@ user is able to add his own website if there's no AI website in database, he can
 <p align="center">Edit profile option</p>
 <p align="center">All list of users that are registered and their statistics etc, adding new websites and more</p>
 <p align="center">Initial settings when user registered his account he has 3 steps to fill in to get his profile full completed</p>
+<p align="center">User is able to add opinion to each user on website with opinion description and number of stars by selecting stars</p>
+<p align="center">User is able to add just simple star to each user profile just like it's on github on repositories</p>
 <p align="center">New functionalities still in progress...</p>
 
 
@@ -31,6 +33,8 @@ user is able to add his own website if there's no AI website in database, he can
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/f934fa75-2960-4601-8c63-1553451bbc9f)
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/a8a8004c-7101-4976-a165-bfee96a9531d)
 ![obraz](https://github.com/Peterr181/ailover/assets/102172769/57f08832-95d9-4977-9b03-fa98a26c9e38)
+![obraz](https://github.com/Peterr181/ailover/assets/102172769/1f8e1d4a-6f91-4882-b4e2-d09529f0aaf5)
+
 
 
 

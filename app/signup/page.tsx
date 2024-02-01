@@ -6,10 +6,10 @@ import { auth } from "../firebase";
 import Link from "next/link";
 
 export default function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordAgain, setPasswordAgain] = useState("");
-  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordAgain, setPasswordAgain] = useState<string>("");
+  const [nickname, setNickname] = useState<string>("");
   const router = useRouter();
   const signup = () => {
     createUserWithEmailAndPassword(auth, email, password)
@@ -18,7 +18,6 @@ export default function Signup() {
         // Update the user's display name (nickname)
         updateProfile(user, { displayName: nickname }).then(() => {
           // Successfully added the nickname
-          console.log(`Nickname ${nickname} added to user profile`);
         });
       })
       .catch((error) => {

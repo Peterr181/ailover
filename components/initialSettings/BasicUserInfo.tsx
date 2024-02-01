@@ -27,6 +27,7 @@ const BasicUserInfo = ({ setProgress, setActiveStep }: BasicUserInfoProps) => {
         userUid: userUid,
         stars: 0,
         imageUrl: "",
+        role: "user",
       });
     }
   };

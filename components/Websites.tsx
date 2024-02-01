@@ -72,6 +72,7 @@ const Websites = () => {
                     image={item.imageUrl}
                     name={item.websiteName}
                     description={item.websiteDescription}
+                    authenticated={item.authenticated}
                   />
                 </Link>
               ))}
