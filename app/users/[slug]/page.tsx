@@ -27,7 +27,7 @@ const UserPage = ({ params }: { params: { slug: string } }) => {
     useFirebaseData("/websites");
 
   const { data: opinionsData, loading: loadingOpinions } = useFirebaseData(
-    `/usersPersonalData/opinions/${params.slug}`
+    `/opinions/${params.slug}`
   );
 
   const [fallingStar, setFallingStar] = useState(false);

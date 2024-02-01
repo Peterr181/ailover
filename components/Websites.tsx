@@ -21,17 +21,16 @@ interface Website {
 
 const Websites = () => {
   const [inputValue, setInputValue] = useState("");
-  const websitesDb = useSelector((state: any) => state.websites.websites);
+
   const { data, loading } = useFirebaseData("/websites");
   const [filteredWebsites, setFilteredWebsites] = useState(data);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     filterWebsites();
-  }, [inputValue, websitesDb]);
+  }, [inputValue, data]);
 
   const filterWebsites = () => {
-    const filtered = websitesDb.filter((item: Website) =>
+    const filtered = data.filter((item: Website) =>
       item.websiteName.toLowerCase().includes(inputValue.toLowerCase())
     );
     setFilteredWebsites(filtered);

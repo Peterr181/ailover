@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../app/firebase";
-import Image from "next/image";
+
 import WebsiteModal from "./WebsiteModal";
 import { uid } from "uid";
 import { set, ref, onValue, remove, update } from "firebase/database";
-import { setterWebsites } from "../redux/slices/websitesSlice";
-import { useDispatch } from "react-redux";
+
+
 import { useSelector } from "react-redux";
 import {
   getStorage,
@@ -14,7 +14,7 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { storage } from "../app/firebase";
-import useFirebaseData from "@/hooks/useFirebaseData";
+
 import { useSession } from "next-auth/react";
 
 const WebsitesItem = () => {
@@ -28,9 +28,9 @@ const WebsitesItem = () => {
   const websitesTest = useSelector((state: any) => state.websites.websites);
   const userUid = auth.currentUser ? auth.currentUser.uid : null;
 
-  const { data, loading } = useFirebaseData("/websites");
 
-  const dispatch = useDispatch();
+
+ 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setShowModal(false);
@@ -58,7 +58,6 @@ const WebsitesItem = () => {
           await uploadBytes(imageRef, image);
           const imageUrl = await getDownloadURL(imageRef);
 
-          // Store the website data under the user's UUID
           set(ref(db, `/websites/${uidd}`), {
             websiteName: websiteName,
             websiteDescription: websiteDescription,
@@ -79,7 +78,7 @@ const WebsitesItem = () => {
     }
   };
 
-  dispatch(setterWebsites(data));
+  
 
   return (
     <div className="websiteItemAdd ">

@@ -103,9 +103,9 @@ const page = () => {
             <div className="recentActivity">
               <p className="text-gray-500">Websites Added</p>
               <div className="mt-5 flex gap-5">
-                {currentUserWebsites.map((website) => (
+                {currentUserWebsites.map((website, index) => (
                   <img
-                    key={website.websiteId}
+                    key={index}
                     src={website.imageUrl}
                     alt="website"
                     className="websiteAdded"
